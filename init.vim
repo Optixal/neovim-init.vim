@@ -6,10 +6,12 @@ call plug#begin()
 " Aesthetics
 Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
 
 " Functionalities
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'roxma/nvim-completion-manager'
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
@@ -41,16 +43,13 @@ set wrap breakindent
 set encoding=utf-8
 set title
 
-""" Filetype-Specific Configurations
-
-" HTML and Jinja
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType htmldjango inoremap {{ {{  }}<left><left><left>
-autocmd FileType htmldjango inoremap {% {%  %}<left><left><left>
-autocmd FileType htmldjango inoremap {# {#  #}<left><left><left>
+""" Map Leader
+let mapleader=","
 
 """ Plugin Configurations
+
+" NERDTree
+nnoremap <leader>f :NERDTreeToggle<CR>
 
 " Powerline
 let g:airline_powerline_fonts = 1
@@ -69,4 +68,13 @@ let g:UltiSnipsEditSplit="vertical"
 
 " NERDTree
 let NERDTreeShowHidden=1
+
+""" Filetype-Specific Configurations
+
+" HTML and Jinja
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType htmldjango inoremap {{ {{  }}<left><left><left>
+autocmd FileType htmldjango inoremap {% {%  %}<left><left><left>
+autocmd FileType htmldjango inoremap {# {#  #}<left><left><left>
 
