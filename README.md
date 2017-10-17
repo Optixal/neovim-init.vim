@@ -37,11 +37,11 @@ nvim
 ### Update
 
 ```sh
-# Pull my updates if you want my new modifications
+# (Optional) Pull my updates if you want my new modifications
 git pull
 
 # Update the plugins (super simple)
-vim
+nvim
 :PlugUpdate
 
 # (Optional) Clean plugins - Deletes unused plugins
