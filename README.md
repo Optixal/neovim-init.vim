@@ -31,7 +31,7 @@ echo "alias vim='nvim'" >> ~/.bashrc
 # Enter Neovim and install plugins
 nvim
 :PlugInstall
-:qa!
+:qa! # Quit All Force (no save). Useful when dealing with multiple split windows.
 ```
 
 ### Update
