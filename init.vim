@@ -10,6 +10,7 @@ Plug 'ryanoasis/vim-devicons'
 
 " Functionalities
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'roxma/nvim-completion-manager'
@@ -38,6 +39,7 @@ set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab smartindent
 set incsearch ignorecase smartcase hlsearch
 set ruler laststatus=2 showcmd showmode
 set number relativenumber
+set list listchars=trail:•
 set fillchars+=vert:\ 
 set wrap breakindent
 set encoding=utf-8
