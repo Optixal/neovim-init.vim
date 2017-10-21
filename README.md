@@ -1,6 +1,16 @@
 # Optixal's Neovim init.vim
 
-![Neovim Screenshot](screenshot.png)
+Normal usage.
+
+![Normal Usage Example](screenshots/screenshot1.png)
+
+Minimal, focussed sessions with Goyo.
+
+![Goyo Minimal Example](screenshots/screenshot2.png)
+
+Multi-windowed editing with NerdTree and TagBar sidebars.
+
+![Multi-Window Example](screenshots/screenshot3.png)
 
 ## Installing and Updating
 
@@ -60,9 +70,23 @@ nvim
 
 ### Mapped Commands in Normal Mode
 
+Most custom commands expand off my map leader, keeping nvim as vanilla as possible.
+
 * `,` Map Leader
-* `,f` Sidebar filetree viewer (NERDTree)
+* `,q` Sidebar filetree viewer (NERDTree)
+* `,w` Sidebar classes, functions, variables list (TagBar)
+* `\`  Toggle both NERDTree and TagBar
+* `,s` New terminal in horizontal split
+* `,vs` New terminal in vertical split
+* `,a` Auto align variables (vim-easy-align)
+* `,f` Fuzzy find a file (fzf)
+* `,g` Goyo mode (Goyo)
+* `,l` Limelight mode (Limelight)
+* `,h` Hackernews vertical windows (requires internet) (vim-hackernews)
+* `,r` Refresh/source ~/.config/nvim/init.vim
 * `,c<Space>` Toggle comment for current line (Nerd Commenter)
+* `<Tab>` Next buffer
+* `<Shift-Tab>` Previous buffer
 
 More commmands at https://github.com/Optixal/.vim/blob/master/reference/commands_vim.txt
 
