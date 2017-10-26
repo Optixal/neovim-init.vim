@@ -3,28 +3,39 @@
 """ Vim-Plug
 call plug#begin()
 
-" Aesthetics
+" Aesthetics - Main
 Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'nightsense/forgotten'
+Plug 'zaki/zazen'
+
+" Aethetics - Additional
+Plug 'nightsense/nemo'
+Plug 'yuttie/hydrangea-vim'
+Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'rhysd/vim-color-spring-night'
 
 " Functionalities
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'roxma/nvim-completion-manager'
 Plug 'jiangmiao/auto-pairs'
-Plug 'alvan/vim-closetag'
 Plug 'junegunn/vim-easy-align'
+Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-abolish'
 Plug 'Yggdroot/indentLine'
-Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/loremipsum'
 
 " Entertainment
@@ -118,23 +129,61 @@ autocmd FileType htmldjango inoremap {{ {{  }}<left><left><left>
 autocmd FileType htmldjango inoremap {% {%  %}<left><left><left>
 autocmd FileType htmldjango inoremap {# {#  #}<left><left><left>
 
+""" Custom Functions
+
+" Dracula Mode (Dark)
+function! ColorDracula()
+    let g:airline_theme=''
+    color dracula
+    IndentLinesEnable
+endfunction
+
+" Seoul256 Mode (Dark & Light)
+function! ColorSeoul256()
+    let g:airline_theme='silver'
+    color seoul256
+    IndentLinesDisable
+endfunction
+
+" Forgotten Mode (Light)
+function! ColorForgotten()
+    " Light airline themes: tomorrow, silver, alduin
+    " Light colors: forgotten-light, nemo-light
+    let g:airline_theme='tomorrow'
+    color forgotten-light
+    IndentLinesDisable
+endfunction
+
+" Zazen Mode (Black & White)
+function! ColorZazen()
+    let g:airline_theme='badcat'
+    color zazen
+    IndentLinesEnable
+endfunction
+
 """ Custom Mappings
 
 let mapleader=","
 nmap <leader>q :NERDTreeToggle<CR>
 nmap <leader>w :TagbarToggle<CR>
 nmap \ <leader>q<leader>w
-nmap <leader>s <C-w>s<C-w>j:terminal<CR>
-nmap <leader>vs <C-w>v<C-w>l:terminal<CR>
+nmap <leader>ee :Colors<CR>
+nmap <leader>ea :AirlineTheme 
+nmap <leader>e1 :call ColorDracula()<CR>
+nmap <leader>e2 :call ColorSeoul256()<CR>
+nmap <leader>e3 :call ColorForgotten()<CR>
+nmap <leader>e4 :call ColorZazen()<CR>
+nmap <leader>r :so ~/.config/nvim/init.vim<CR>
 xmap <leader>a gaip*
 nmap <leader>a gaip*
+nmap <leader>ss <C-w>s<C-w>j:terminal<CR>
+nmap <leader>sv <C-w>v<C-w>l:terminal<CR>
 nmap <leader>f :Files<CR>
 nmap <leader>g :Goyo<CR>
+nmap <leader>h <C-w>v<C-w>l:HackerNews best<CR>J
 nmap <leader>l :Limelight!!<CR>
 xmap <leader>l :Limelight!!<CR>
-nmap <leader>h <C-w>v<C-w>l:HackerNews best<CR>J
-nmap <leader>r :so ~/.config/nvim/init.vim<CR>
-nmap <leader><leader> :noh<CR>
+nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 
