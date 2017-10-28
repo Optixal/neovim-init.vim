@@ -85,9 +85,11 @@ Most custom commands expand off my map leader, keeping nvim as vanilla as possib
 * `,e3` - Color mode: Forgotten (Light)
 * `,e4` - Color mode: Zazen (Black & White)
 * `,r` - Refresh/source ~/.config/nvim/init.vim
+* `,t` - Trim all trailing whitespaces
 * `,a` - Auto align variables (vim-easy-align), eg. do `,a=` while your cursor is on a bunch of variables to align their equal signs
 * `,s` - New terminal in horizontal split
 * `,vs` - New terminal in vertical split
+* `,d` - Automatically generate Python docstrings while cursor is hovering above a function or class
 * `,f` - Fuzzy find a file (fzf)
 * `,g` - Toggle Goyo mode (Goyo), super clean and minimalistic viewing mode
 * `,h` - Toggle rainbow parentheses highlighting

@@ -38,6 +38,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'heavenshell/vim-pydocstring'
 Plug 'vim-scripts/loremipsum'
 
 " Entertainment
@@ -137,6 +138,13 @@ autocmd FileType journal setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 """ Custom Functions
 
+" Trim Whitespaces
+function! TrimWhitespace()
+    let l:save = winsaveview()
+    %s/\\\@<!\s\+$//e
+    call winrestview(l:save)
+endfunction
+
 " Dracula Mode (Dark)
 function! ColorDracula()
     let g:airline_theme=''
@@ -180,10 +188,12 @@ nmap <leader>e2 :call ColorSeoul256()<CR>
 nmap <leader>e3 :call ColorForgotten()<CR>
 nmap <leader>e4 :call ColorZazen()<CR>
 nmap <leader>r :so ~/.config/nvim/init.vim<CR>
+nmap <leader>t :call TrimWhitespace()<CR>
 xmap <leader>a gaip*
 nmap <leader>a gaip*
 nmap <leader>s <C-w>s<C-w>j:terminal<CR>
 nmap <leader>vs <C-w>v<C-w>l:terminal<CR>
+nmap <leader>d <Plug>(pydocstring)
 nmap <leader>f :Files<CR>
 nmap <leader>g :Goyo<CR>
 nmap <leader>h :RainbowParentheses!!<CR>
