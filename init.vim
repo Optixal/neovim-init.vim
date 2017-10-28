@@ -11,6 +11,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-journal'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'nightsense/forgotten'
 Plug 'zaki/zazen'
 
@@ -56,7 +58,7 @@ set termguicolors
 
 """ Other Configurations
 filetype plugin indent on
-set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab autoindent
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set ruler laststatus=2 showcmd showmode
 set list listchars=trail:»,tab:»-
@@ -129,6 +131,10 @@ autocmd FileType htmldjango inoremap {{ {{  }}<left><left><left>
 autocmd FileType htmldjango inoremap {% {%  %}<left><left><left>
 autocmd FileType htmldjango inoremap {# {#  #}<left><left><left>
 
+" Markdown and Journal
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType journal setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
 """ Custom Functions
 
 " Dracula Mode (Dark)
@@ -176,13 +182,15 @@ nmap <leader>e4 :call ColorZazen()<CR>
 nmap <leader>r :so ~/.config/nvim/init.vim<CR>
 xmap <leader>a gaip*
 nmap <leader>a gaip*
-nmap <leader>ss <C-w>s<C-w>j:terminal<CR>
-nmap <leader>sv <C-w>v<C-w>l:terminal<CR>
+nmap <leader>s <C-w>s<C-w>j:terminal<CR>
+nmap <leader>vs <C-w>v<C-w>l:terminal<CR>
 nmap <leader>f :Files<CR>
 nmap <leader>g :Goyo<CR>
-nmap <leader>h <C-w>v<C-w>l:HackerNews best<CR>J
+nmap <leader>h :RainbowParentheses!!<CR>
+nmap <leader>j :set filetype=journal<CR>
 nmap <leader>l :Limelight!!<CR>
 xmap <leader>l :Limelight!!<CR>
+nmap <leader>n <C-w>v<C-w>l:HackerNews best<CR>J
 nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
