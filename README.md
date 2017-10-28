@@ -18,7 +18,7 @@ Multi-windowed editing with NerdTree and TagBar sidebars.
 
 ```sh
 # Install nvim, pip3 and git
-sudo apt install nvim python3-pip git
+sudo apt install neovim python3-pip git
 
 # Install pip modules for Neovim
 pip3 install --user neovim jedi psutil setproctitle
