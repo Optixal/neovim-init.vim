@@ -38,10 +38,11 @@ Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'KabbAmine/vCoolor.vim'
 Plug 'chrisbra/Colorizer'
 Plug 'heavenshell/vim-pydocstring'
 Plug 'vim-scripts/loremipsum'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Entertainment
 Plug 'ryanss/vim-hackernews'
@@ -81,20 +82,28 @@ let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable = '↠'
 let g:NERDTreeDirArrowCollapsible = '↡'
 
-" Powerline
+" Airline
 let g:airline_powerline_fonts = 1
 let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
 let g:airline_section_warning = ''
+"let g:airline#extensions#tabline#enabled = 1
 
 " Neovim :Terminal
 tmap <Esc> <C-\><C-n>
 tmap <C-w> <Esc><C-w>
-tmap <C-d> <Esc>:q<CR>
+"tmap <C-d> <Esc>:q<CR>
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
 " Nvim Completion Manager
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+let g:cm_complete_popup_delay = 0
+let g:cm_refresh_length = [[1, 2], [7, 2]]
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<C-Space>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<C-x>"
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
@@ -206,42 +215,9 @@ nmap <leader>j :set filetype=journal<CR>
 nmap <leader>k :ColorToggle<CR>
 nmap <leader>l :Limelight!!<CR>
 xmap <leader>l :Limelight!!<CR>
-autocmd FileType python nmap <leader>x :0,$!python3 -m yapf<CR>
+autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yapf<CR>
 nmap <leader>n <C-w>v<C-w>l:HackerNews best<CR>J
 nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
-
-nmap <buffer> <silent> <expr> <F12> InsertCol()
-imap <buffer> <silent> <expr> <F12> InsertCol()
-
-function! InsertCol()
-    let w:first_call = exists('w:first_call') ? 0 : 1
-    "if w:first_call
-    "    startinsert
-    "endif
-    try
-        let char = getchar()
-    catch /^Vim:Interrupt$/
-        let char = "\<Esc>"
-    endtry
-    if char == '^\d\+$' || type(char) == 0
-        let char = nr2char(char)
-    endif " It is the ascii code.
-    if char == "\<Esc>"
-        unlet w:first_call
-        return char
-    endif
-    redraw
-    if w:first_call
-        return char."\<Esc>gvA\<C-R>=Redraw()\<CR>\<F12>"
-    else
-        return char."\<Esc>gvlA\<C-R>=Redraw()\<CR>\<F12>"
-    endif
-endfunction
-
-function! Redraw()
-    redraw
-    return ''
-endfunction
 

@@ -14,9 +14,9 @@ pip3 install --user virtualenv &&\
 python3 -m virtualenv ~/.config/nvim/env &&\
 
 # Install pip modules for Neovim within the virtual environment created
-echo '[*] Activating virtualenv and pip installing Neovim (for Python plugin support) and libraries for async autocompletion support (jedi, psutil, setproctitle) ...' &&\
+echo '[*] Activating virtualenv and pip installing Neovim (for Python plugin support), libraries for async autocompletion support (jedi, psutil, setproctitle), and library for pep8-style formatting (yapf) ...' &&\
 source ~/.config/nvim/env/bin/activate &&\
-pip install neovim jedi psutil setproctitle &&\
+pip install neovim jedi psutil setproctitle yapf &&\
 deactivate &&\
 
 # Install vim-plug plugin manager
