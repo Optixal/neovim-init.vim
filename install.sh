@@ -10,8 +10,8 @@ sudo apt install neovim python3 python3-pip git exuberant-ctags -y &&\
 
 # Install virtualenv to containerize dependencies
 echo '[*] Pip installing virtualenv to containerize Neovim dependencies (instead of installing them onto your system) ...' &&\
-pip3 install --user virtualenv &&\
-python3 -m virtualenv ~/.config/nvim/env &&\
+python3 -m pip install virtualenv &&\
+python3 -m virtualenv -p python3 ~/.config/nvim/env &&\
 
 # Install pip modules for Neovim within the virtual environment created
 echo '[*] Activating virtualenv and pip installing Neovim (for Python plugin support), libraries for async autocompletion support (jedi, psutil, setproctitle), and library for pep8-style formatting (yapf) ...' &&\
@@ -37,7 +37,7 @@ sed '/call plug#end/q' init.vim > ~/.config/nvim/init.vim &&\
 nvim -c ':PlugInstall' -c ':qall' &&\
 rm ~/.config/nvim/init.vim &&\
 
-# Copy init.vim in current working directory to nvim's config location ...`
+# Copy init.vim in current working directory to nvim's config location ...
 echo '[*] Copying init.vim -> ~/.config/nvim/init.vim' &&\
 cp init.vim ~/.config/nvim/ &&\
 

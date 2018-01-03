@@ -29,7 +29,10 @@ Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'roxma/nvim-completion-manager'
+"Plug 'roxma/nvim-completion-manager'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'alvan/vim-closetag'
@@ -43,6 +46,7 @@ Plug 'heavenshell/vim-pydocstring'
 Plug 'vim-scripts/loremipsum'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'metakirby5/codi.vim'
 
 " Entertainment
 Plug 'ryanss/vim-hackernews'
@@ -62,6 +66,10 @@ highlight NonText guibg=none
 
 " Opaque Background (Comment out to use terminal's profile)
 set termguicolors
+
+" Transparent Background (For i3 and compton)
+"highlight Normal guibg=NONE ctermbg=NONE
+"highlight LineNr guibg=NONE ctermbg=NONE
 
 """ Other Configurations
 filetype plugin indent on
@@ -96,9 +104,19 @@ autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
 " Nvim Completion Manager
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-let g:cm_complete_popup_delay = 0
-let g:cm_refresh_length = [[1, 2], [7, 2]]
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"let g:cm_complete_popup_delay = 0
+"let g:cm_refresh_length = [[1, 2], [7, 2]]
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+" Disable documentation window
+set completeopt-=preview
+" Close the documentation window when completion is done
+"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "<C-n>"
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<C-Space>"
@@ -139,8 +157,9 @@ let g:fzf_colors =
 
 """ Filetype-Specific Configurations
 
-" HTML and Jinja
+" HTML, XML, Jinja
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType xml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango inoremap {{ {{  }}<left><left><left>
 autocmd FileType htmldjango inoremap {% {%  %}<left><left><left>
