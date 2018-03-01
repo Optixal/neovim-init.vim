@@ -25,7 +25,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 
 # (Optional but recommended) Install a nerd font for icons and a beautiful airline bar (https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts) (I'll be using Roboto Mono for Powerline)
 echo "[*] Downloading patch font into ~/.local/share/fonts ..." &&\
-curl -fLo ~/.local/share/fonts/Roboto\ Mono\ Nerd\ Font\ Complete.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/complete/Roboto%20Mono%20Nerd%20Font%20Complete.ttf &&\
+curl -fLo ~/.local/share/fonts/Roboto\ Mono\ Nerd\ Font\ Complete.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/complete/Roboto%20Mono%20Nerd%20Font%20Complete.ttf &&\
 
 # (Optional) Alias vim -> nvim
 echo '[*] Aliasing vim -> nvim, remember to source ~/.bashrc ...' &&\
