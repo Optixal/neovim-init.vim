@@ -29,7 +29,6 @@ Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'roxma/nvim-completion-manager'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
@@ -103,17 +102,10 @@ tmap <C-w> <Esc><C-w>
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
-" Nvim Completion Manager
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"let g:cm_complete_popup_delay = 0
-"let g:cm_refresh_length = [[1, 2], [7, 2]]
-
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 " Disable documentation window
 set completeopt-=preview
-" Close the documentation window when completion is done
-"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<C-n>"
@@ -159,6 +151,7 @@ let g:fzf_colors =
 
 " HTML, XML, Jinja
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango inoremap {{ {{  }}<left><left><left>
@@ -235,7 +228,7 @@ nmap <leader>k :ColorToggle<CR>
 nmap <leader>l :Limelight!!<CR>
 xmap <leader>l :Limelight!!<CR>
 autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yapf<CR>
-nmap <leader>n <C-w>v<C-w>l:HackerNews best<CR>J
+nmap <leader>n :HackerNews best<CR>J
 nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
