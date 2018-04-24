@@ -205,8 +205,8 @@ endfunction
 
 let mapleader=","
 nmap <leader>q :NERDTreeToggle<CR>
+nmap \ <leader>q
 nmap <leader>w :TagbarToggle<CR>
-nmap \ <leader>q<leader>w
 nmap <leader>ee :Colors<CR>
 nmap <leader>ea :AirlineTheme 
 nmap <leader>e1 :call ColorDracula()<CR>
