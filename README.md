@@ -93,6 +93,14 @@ cp init.vim ~/.config/nvim/
 * Colorschemes may not be rendered
 * Changing fonts may be harder (https://unix.stackexchange.com/a/49823), if you can't be bothered, you should uncomment the devicons plugin within "init.vim" (`" Plug 'ryanoasis/vim-devicons'`)
 
+### For Linux/Ubuntu Users
+
+If you want to run the install.sh file you need to have curl installed
+
+```
+sudo apt-get install curl 
+```
+
 ### Mapped Commands in Normal Mode
 
 Most custom commands expand off my map leader, keeping nvim as vanilla as possible.
