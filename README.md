@@ -2,15 +2,15 @@
 
 Normal usage.
 
-![Normal Usage Example](screenshots/screenshot1.png)
+![Normal Usage Example](https://user-images.githubusercontent.com/19287477/62753305-b329be80-ba9d-11e9-84a8-8e778a47bd10.png)
 
 Minimal, focussed sessions with Goyo.
 
-![Goyo Minimal Example](screenshots/screenshot2.png)
+![Goyo Minimal Example](https://user-images.githubusercontent.com/19287477/62753311-b6bd4580-ba9d-11e9-936f-6dbadf90af46.png)
 
 Multi-windowed editing with NerdTree and TagBar sidebars.
 
-![Multi-Window Example](screenshots/screenshot3.png)
+![Multi-Window Example](https://user-images.githubusercontent.com/19287477/62753315-b8870900-ba9d-11e9-9276-705c3ab76eba.png)
 
 ## Installing and Updating
 
