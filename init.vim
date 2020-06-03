@@ -31,6 +31,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/deoplete-clangx'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
@@ -47,6 +49,16 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'metakirby5/codi.vim'
 Plug 'dkarter/bullets.vim'
+
+" user
+Plug 'jceb/vim-orgmode'
+Plug 'airblade/vim-gitgutter'
+Plug 'mileszs/ack.vim'
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+set updatetime=100
+set cursorline
 
 " Entertainment
 "Plug 'ryanss/vim-hackernews'
@@ -86,7 +98,7 @@ set title
 """ Plugin Configurations
 
 " NERDTree
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=0
 let g:NERDTreeDirArrowExpandable = '↠'
 let g:NERDTreeDirArrowCollapsible = '↡'
 
@@ -105,6 +117,13 @@ autocmd BufLeave term://* stopinsert
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
+" Change clang binary path
+call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
+" Change clang options
+call deoplete#custom#var('clangx', 'default_c_options', '')
+" add .clang-complete file under working dir for completion.
+call deoplete#custom#var('clangx', 'default_cpp_options', '')
+
 " Disable documentation window
 set completeopt-=preview
 
@@ -205,6 +224,7 @@ endfunction
 """ Custom Mappings
 
 let mapleader=","
+let maplocalleader=","
 nmap <leader>q :NERDTreeToggle<CR>
 nmap \ <leader>q
 nmap <leader>w :TagbarToggle<CR>
@@ -231,6 +251,6 @@ xmap <leader>l :Limelight!!<CR>
 autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yapf<CR>
 "nmap <leader>n :HackerNews best<CR>J
 nmap <silent> <leader><leader> :noh<CR>
-nmap <Tab> :bnext<CR>
-nmap <S-Tab> :bprevious<CR>
+"nmap <Tab> :bnext<CR>
+"nmap <S-Tab> :bprevious<CR>
 
