@@ -183,6 +183,7 @@ autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType journal setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 """ Custom Functions
+autocmd FileType help wincmd L
 
 " Trim Whitespaces
 function! TrimWhitespace()
