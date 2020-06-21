@@ -42,7 +42,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'chrisbra/Colorizer'
 Plug 'KabbAmine/vCoolor.vim'
-Plug 'heavenshell/vim-pydocstring'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'vim-scripts/loremipsum'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -108,6 +108,9 @@ autocmd BufLeave term://* stopinsert
 let g:deoplete#enable_at_startup = 1
 " Disable documentation window
 set completeopt-=preview
+
+" vim-pydocstring
+let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<C-n>"
