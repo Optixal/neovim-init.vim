@@ -7,17 +7,16 @@ mkdir -p ~/.config/nvim
 # Install nvim (and its dependencies: pip3, git), Python 3 and ctags (for tagbar)
 echo '[*] App installing Neovim and its dependencies (Python 3 and git), and dependencies for tagbar (exuberant-ctags) ...'
 sudo apt update
-sudo apt install neovim python3 python3-pip git curl exuberant-ctags -y
+sudo apt install neovim python3 python3-pip python3-venv git curl exuberant-ctags -y
 
 # Install virtualenv to containerize dependencies
-echo '[*] Pip installing virtualenv to containerize Neovim dependencies (instead of installing them onto your system) ...'
-python3 -m pip install virtualenv
-python3 -m virtualenv -p python3 ~/.config/nvim/env
+echo '[*] Pip installing venv to containerize Neovim dependencies (instead of installing them onto your system) ...'
+python3 -m venv ~/.config/nvim/env
 
 # Install pip modules for Neovim within the virtual environment created
 echo '[*] Activating virtualenv and pip installing Neovim (for Python plugin support), libraries for async autocompletion support (jedi, psutil, setproctitle), and library for pep8-style formatting (yapf) ...'
 source ~/.config/nvim/env/bin/activate
-pip install neovim==0.2.6 jedi psutil setproctitle yapf
+pip install pynvim jedi psutil setproctitle yapf # run `pip uninstall neovim pynvim` if still using old neovim module
 deactivate
 
 # Install vim-plug plugin manager
