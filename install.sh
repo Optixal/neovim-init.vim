@@ -28,8 +28,13 @@ echo "[*] Downloading patch font into ~/.local/share/fonts ..."
 curl -fLo ~/.fonts/Iosevka\ Term\ Nerd\ Font\ Complete.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete.ttf
 
 # (Optional) Alias vim -> nvim
-echo '[*] Aliasing vim -> nvim, remember to source ~/.bashrc ...'
-echo "alias vim='nvim'" >> ~/.bashrc
+alias_string="alias vim='nvim'"
+if grep -q "$alias_string" "~/.bashrc"; then
+  echo '[*] Aliasing vim -> nvim, already exists ...'
+else
+  echo '[*] Aliasing vim -> nvim, remember to source ~/.bashrc ...'
+  echo "alias vim='nvim'" >> ~/.bashrc
+fi
 
 # Enter Neovim and install plugins using a temporary init.vim, which avoids warnings about missing colorschemes, functions, etc
 echo -e '[*] Running :PlugInstall within nvim ...'
