@@ -24,7 +24,10 @@ echo '[*] Downloading vim-plug, the best minimalistic vim plugin manager ...'
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Create a backup of your current init.vim if you have one
-cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.backup 2> /dev/null
+if [ -f ~/.config/nvim/init.vim ]; then
+    echo '[*] Backing up existing init.vim'
+    cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.backup
+fi
 
 # Enter Neovim and install plugins with vim-plug's :PlugInstall and coc extensions with CoC's :CocInstall using a temporary init.vim, which avoids warnings about missing colorschemes, functions, etc
 echo -e '[*] Running :PlugInstall within nvim ...'
