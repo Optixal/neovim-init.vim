@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+# Installs Optixal's neovim-init.vim into ~/.config/nvim/init.vim. Intended for Ubuntu/Debian. I highly recommend running the following commands manually, especially if you are running macOS or other Linux distros. For macOS, use homebrew instead of apt.
+
 # Make config directory for Neovim's init.vim
 echo '[*] Preparing Neovim config directory ...'
 mkdir -p ~/.config/nvim
@@ -9,37 +11,29 @@ echo '[*] App installing Neovim and its dependencies (Python 3 and git), and dep
 sudo apt update
 sudo apt install neovim python3 python3-pip python3-venv git curl exuberant-ctags -y
 
-# Install virtualenv to containerize dependencies
-echo '[*] Pip installing venv to containerize Neovim dependencies (instead of installing them onto your system) ...'
-python3 -m venv ~/.config/nvim/env
+# Install Node.js v16.x (for Ubuntu) for coc.vim
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt install -y nodejs
 
-# Install pip modules for Neovim within the virtual environment created
-echo '[*] Activating virtualenv and pip installing Neovim (for Python plugin support), libraries for async autocompletion support (jedi, psutil, setproctitle), and library for pep8-style formatting (yapf) ...'
-source ~/.config/nvim/env/bin/activate
-pip install pynvim jedi psutil setproctitle yapf doq # run `pip uninstall neovim pynvim` if still using old neovim module
-deactivate
+# Install The Silver Searcher (ag), ripgrep (rg) and bat for fzf.vim
+sudo apt install -y silversearcher-ag
+sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep # https://github.com/sharkdp/bat/issues/938
 
 # Install vim-plug plugin manager
 echo '[*] Downloading vim-plug, the best minimalistic vim plugin manager ...'
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# (Optional but recommended) Install a nerd font for icons and a beautiful airline bar (https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts) (I'll be using Iosevka for Powerline)
-echo "[*] Downloading patch font into ~/.local/share/fonts ..."
-curl -fLo ~/.fonts/Iosevka\ Term\ Nerd\ Font\ Complete.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete.ttf
+# Create a backup of your current init.vim if you have one
+cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.backup 2> /dev/null
 
-# (Optional) Alias vim -> nvim
-echo '[*] Aliasing vim -> nvim, remember to source ~/.bashrc ...'
-echo "alias vim='nvim'" >> ~/.bashrc
-
-# Enter Neovim and install plugins using a temporary init.vim, which avoids warnings about missing colorschemes, functions, etc
+# Enter Neovim and install plugins with vim-plug's :PlugInstall and coc extensions with CoC's :CocInstall using a temporary init.vim, which avoids warnings about missing colorschemes, functions, etc
 echo -e '[*] Running :PlugInstall within nvim ...'
 sed '/call plug#end/q' init.vim > ~/.config/nvim/init.vim
-nvim -c ':PlugInstall' -c ':UpdateRemotePlugins' -c ':qall'
+nvim -c 'PlugInstall' -c 'CocInstall -sync coc-tsserver coc-json coc-html coc-css coc-pyright' -c 'qa'
 rm ~/.config/nvim/init.vim
 
 # Copy init.vim in current working directory to nvim's config location ...
 echo '[*] Copying init.vim -> ~/.config/nvim/init.vim'
 cp init.vim ~/.config/nvim/
 
-echo -e "[+] Done, welcome to \033[1m\033[92mNeoVim\033[0m! Try it by running: nvim/vim. Want to customize it? Modify ~/.config/nvim/init.vim"
-
+echo -e "[+] Done, welcome to your new \033[1m\033[92mNeovim\033[0m experience! Try it by running: nvim/vim. Want to customize it? Modify ~/.config/nvim/init.vim! Remember to change your terminal font to Iosevka Term Regular, or any other preferred nerd font :)"

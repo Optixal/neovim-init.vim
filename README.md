@@ -18,92 +18,67 @@ Multi-windowed editing with NerdTree and TagBar sidebars.
 
 #### Automated Installation
 
-Run `./install.sh`
+`./install.sh`
 
-#### Manual Installation
+Automatically installs my configuration, along with dependencies into your system. Tested on Ubuntu 20.04. I highly suggest reading and understanding each line of the installation script before running it, especially if you are using other Linux distros, or macOS. For macOS, manually run the commands, and use `homebrew` instead of `apt`.
+
+#### Post Installation
+
+##### Download and install a Nerd Font
+
+Airline and devicons require a patched font, or Nerd Font in order to display properly. Run `./font_install.sh` to download and install Iosevka Term Nerd Font into your `~/.fonts` directory, or run the command manually:
 
 ```sh
-#!/bin/bash -e
-
-# Make config directory for Neovim's init.vim
-mkdir -p ~/.config/nvim
-
-# Install nvim (and its dependencies: pip3, git), Python 3 and ctags (for tagbar)
-sudo apt update
-sudo apt install neovim python3 python3-pip git curl exuberant-ctags -y
-
-# Install virtualenv to containerize dependencies
-python3 -m pip install virtualenv
-python3 -m virtualenv -p python3 ~/.config/nvim/env
-
-# Install pip modules for Neovim within the virtual environment created
-source ~/.config/nvim/env/bin/activate
-pip install neovim==0.2.6 jedi psutil setproctitle yapf
-deactivate
-
-# Install vim-plug plugin manager
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# (Optional but recommended) Install a nerd font for icons and a beautiful airline bar (https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts) (I'll be using Iosevka for Powerline)
 curl -fLo ~/.fonts/Iosevka\ Term\ Nerd\ Font\ Complete.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete.ttf
+```
 
-# (Optional) Alias vim -> nvim
+Once downloaded, open your terminal's preferences and change the font to "Iosevka Term Regular". If the font is not there, your OS' font directory may not be `~/.fonts`. Find out which directory your fonts are stored in, and place the downloaded font file in that directory instead.
+
+##### Alias vim
+
+It may be easier for you to type `vim` instead of `nvim` everytime you edit a file, so aliasing it could save you some trouble. Add an alias to your bashrc/zshrc/somerc or aliases file to alias nvim to vim:
+
+```sh
 echo "alias vim='nvim'" >> ~/.bashrc
+```
 
-# Enter Neovim and install plugins using a temporary init.vim, which avoids warnings about missing colorschemes, functions, etc
-sed '/call plug#end/q' init.vim > ~/.config/nvim/init.vim
-nvim -c ':PlugInstall' -c ':UpdateRemotePlugins' -c ':qall'
-rm ~/.config/nvim/init.vim
+##### Fix nvim + tmux issues
 
-# Copy init.vim in current working directory to nvim's config location ...
-cp init.vim ~/.config/nvim/
+Running nvim within a tmux session may cause certain unwanted issues like escape key lag, or displaying wrong colors. Run `cat .tmux.conf >> ~/.tmux.conf` or manually add these to your `~/.tmux.conf` configuration file to address the issues:
+
+```sh
+set -sg escape-time 5 # fix vim esc delay
+set -g default-terminal "screen-256color" # ensures vim uses right $TERM color, default is "screen"
+set -ga terminal-overrides ",*256col*:Tc" # fixes vim reproducing slightly wrong colors in tmux
 ```
 
 ### Update
 
-Update plugins (super simple)
+#### Updates from me
 
-```
-nvim
-:PlugUpdate
-```
-
-(Optional) Clean plugins - Deletes unused plugins
-
-```
-nvim
-:PlugClean
-```
-
-(Optional) Check, download and install the latest vim-plug
-
-```
-nvim
-:PlugUpgrade
-```
-
-(Optional) Pull my updates if you want my new modifications
+I occasionally update and push my new configurations here. If you want to receive the updates, you can pull the latest init.vim and replace the one you have.
 
 ```sh
 git pull
 cp init.vim ~/.config/nvim/
 ```
 
-## Note
+#### vim-plug commands for plugins
 
-### For Non-GUI Users
+Run these to install new plugins, update or delete existing plugins, or upgrade vim-plug itself.
 
-* Colorschemes may not be rendered
-* Changing fonts may be harder (https://unix.stackexchange.com/a/49823), if you do not intend to do customize your font, you should uncomment the devicons plugin within "init.vim" (`" Plug 'ryanoasis/vim-devicons'`)
+* Install plugins: `:PlugInstall` in nvim
+* Update plugins: `:PlugUpdate` in nvim
+* Delete unused plugins: `:PlugClean` in nvim
+* Update vim-plug itself: `:PlugUpgrade` in nvim
 
 ### Mapped Commands in Normal Mode
 
 Most custom commands expand off my map leader, keeping nvim as vanilla as possible.
 
 * `,` - Map leader, nearly all my custom mappings starts with pressing the comma key
-* `,q` - Sidebar filetree viewer (NERDTree)
-* `,w` - Sidebar classes, functions, variables list (TagBar)
-* `\`  - Toggle both NERDTree and TagBar
+* `,q` or `\` - Toggle sidebar filetree viewer (NERDTree)
+* `,w` or `|` - Toggle sidebar classes, functions, variables list (TagBar)
 * `,ee` - Change colorscheme (with fzf fuzzy finder)
 * `,ea` - Change Airline theme
 * `,e1` - Color mode: Dracula (Dark)
@@ -112,20 +87,22 @@ Most custom commands expand off my map leader, keeping nvim as vanilla as possib
 * `,e4` - Color mode: Zazen (Black & White)
 * `,r` - Refresh/source ~/.config/nvim/init.vim
 * `,t` - Trim all trailing whitespaces
+* `,y` - Opens HackerNews in a new vertical split window (vim-hackernews)
+* `,p` - Automatically generate Python docstrings while cursor is hovering above a Python function or class (vim-pydocstring)
 * `,a` - Auto align variables (vim-easy-align), eg. do `,a=` while your cursor is on a bunch of variables to align their equal signs
-* `,s` - New terminal in horizontal split
-* `,vs` - New terminal in vertical split
-* `,d` - Automatically generate Python docstrings while cursor is hovering above a function or class
-* `,f` - Fuzzy find a file (fzf)
-* `,g` - Toggle Goyo mode (Goyo), super clean and minimalistic viewing mode
-* `,h` - Toggle rainbow parentheses highlighting
+* `,s` - Fuzzy find for a string in your current working directory (fzf)
+* `,d` - Fuzzy find a file (fzf)
+* `,f` - Fuzzy find for a string in the current file/buffer (fzf)
+* `,g` - Toggle Goyo mode, super clean and minimalistic display mode (Goyo)
+* `,h` - Toggle rainbow parentheses highlighting (rainbow-parentheses.vim)
 * `,j` - Set filetype to "journal" which makes the syntax highlighting beautiful when working on regular text files and markdown
 * `,k` - Toggle coloring of hex colors
-* `,l` - Toggle Limelight mode (Limelight), highlight the lines near cursor only
+* `,l` - Toggle Limelight mode, highlight the lines near cursor only (Limelight)
+* `,x` - Auto format Python scripts (yapf)
+* `,,` - Remove highlights
 * `,c<Space>` - Toggle comment for current line (Nerd Commenter)
-* `<Alt-r>` - Toggle RGB color picker
+* `,$s` - New terminal in horizontal split
+* `,$v` - New terminal in vertical split
+* `<Alt-r/c>` - Toggle RGB color picker (vCoolor) (uses GTK+, requires yad or zenity)
 * `<Tab>` - Next buffer
 * `<Shift-Tab>` - Previous buffer
-
-More commmands at https://github.com/Optixal/.vim/blob/master/reference/commands_vim.txt
-
