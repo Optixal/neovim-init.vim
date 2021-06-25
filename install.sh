@@ -32,7 +32,7 @@ fi
 # Enter Neovim and install plugins with vim-plug's :PlugInstall and coc extensions with CoC's :CocInstall using a temporary init.vim, which avoids warnings about missing colorschemes, functions, etc
 echo -e '[*] Running :PlugInstall within nvim ...'
 sed '/call plug#end/q' init.vim > ~/.config/nvim/init.vim
-nvim -c 'PlugInstall' -c 'CocInstall -sync coc-tsserver coc-json coc-html coc-css coc-pyright' -c 'qa'
+nvim -c 'PlugInstall' -c 'qa'
 rm ~/.config/nvim/init.vim
 
 # Copy init.vim in current working directory to nvim's config location ...

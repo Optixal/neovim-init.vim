@@ -34,6 +34,16 @@ curl -fLo ~/.fonts/Iosevka\ Term\ Nerd\ Font\ Complete.ttf --create-dirs https:/
 
 Once downloaded, open your terminal's preferences and change the font to "Iosevka Term Regular". If the font is not there, your OS' font directory may not be `~/.fonts`. Find out which directory your fonts are stored in, and place the downloaded font file in that directory instead.
 
+##### Install coc extensions
+
+To get autocompletion capabilities for the various languages you work with, you need to install coc extensions for coc. If you code in JS, do frontend, and write Python, run the following within nvim:
+
+```
+:CocInstall -sync coc-tsserver coc-json coc-html coc-css coc-pyright
+```
+
+Find out more about coc extensions and what is available over [here](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions).
+
 ##### Alias vim
 
 It may be easier for you to type `vim` instead of `nvim` everytime you edit a file, so aliasing it could save you some trouble. Add an alias to your bashrc/zshrc/somerc or aliases file to alias nvim to vim:
