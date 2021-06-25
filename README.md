@@ -1,16 +1,24 @@
 # Optixal's Neovim init.vim
 
-Normal usage.
+Use it as a regular text editor, with key information from [vim-airline](https://github.com/vim-airline/vim-airline), and subtle diff information with [vim-signify](https://github.com/mhinz/vim-signify):
 
-![Normal Usage Example](https://user-images.githubusercontent.com/19287477/62753305-b329be80-ba9d-11e9-84a8-8e778a47bd10.png)
+![Regular Text Editor Usage](https://user-images.githubusercontent.com/19287477/123475234-af6d9980-d62d-11eb-8698-4b19c73409cf.png)
 
-Minimal, focussed sessions with Goyo.
+Or use it as a full-fledged IDE, with autocompletion from [CoC](https://github.com/neoclide/coc.nvim), [NERDTree](https://github.com/preservim/nerdtree) filesystem explorer, and [Tagbar] window to browse tags and the structure of your file:
 
-![Goyo Minimal Example](https://user-images.githubusercontent.com/19287477/62753311-b6bd4580-ba9d-11e9-936f-6dbadf90af46.png)
+![IDE Usage](https://user-images.githubusercontent.com/19287477/123474313-594c2680-d62c-11eb-9b6f-65eca8b3bf04.png)
 
-Multi-windowed editing with NerdTree and TagBar sidebars.
+Quickly find files or strings by fuzzy searching with [fzf.vim](https://github.com/junegunn/fzf.vim) in a beautiful pop-up window:
 
-![Multi-Window Example](https://user-images.githubusercontent.com/19287477/62753315-b8870900-ba9d-11e9-9276-705c3ab76eba.png)
+![FZF Usage](https://user-images.githubusercontent.com/19287477/123475668-4c303700-d62e-11eb-92cc-9e8dfbeffdfb.png)
+
+Or perhaps.. ~~procrastinate~~ multitask with [vim-hackernews](https://github.com/dansomething/vim-hackernews) at the side while coding:
+
+![Hacker News Usage](https://user-images.githubusercontent.com/19287477/123479447-88b26180-d633-11eb-988a-bd4cf772dccc.png)
+
+Transparent/translucent terminal background support (uncomment lines in TransparentBackground function), example from WSL2 running Ubuntu on Windows:
+
+![Transparent Usage](https://user-images.githubusercontent.com/19287477/123476545-6f0f1b00-d62f-11eb-8a3b-51589ac78cd7.png)
 
 ## Installing and Updating
 
