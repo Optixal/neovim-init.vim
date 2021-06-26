@@ -1,6 +1,6 @@
 # Optixal's Neovim init.vim
 
-Use it as a regular text editor, with key information from [vim-airline](https://github.com/vim-airline/vim-airline), and subtle diff information with [vim-signify](https://github.com/mhinz/vim-signify):
+Use it as a regular text editor, with [Dracula](https://github.com/dracula/vim) as the main colorscheme, key information from [vim-airline](https://github.com/vim-airline/vim-airline), and subtle git diff information with [vim-signify](https://github.com/mhinz/vim-signify):
 
 ![Regular Text Editor Usage](https://user-images.githubusercontent.com/19287477/123475234-af6d9980-d62d-11eb-8698-4b19c73409cf.png)
 
