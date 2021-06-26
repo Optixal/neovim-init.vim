@@ -4,7 +4,7 @@ Use it as a regular text editor, with key information from [vim-airline](https:/
 
 ![Regular Text Editor Usage](https://user-images.githubusercontent.com/19287477/123475234-af6d9980-d62d-11eb-8698-4b19c73409cf.png)
 
-Or use it as a full-fledged IDE, with autocompletion from [CoC](https://github.com/neoclide/coc.nvim), [NERDTree](https://github.com/preservim/nerdtree) filesystem explorer, and [Tagbar] window to browse tags and the structure of your file:
+Or use it as a full-fledged IDE, with autocompletion from [CoC](https://github.com/neoclide/coc.nvim), a filesystem explorer from [NERDTree](https://github.com/preservim/nerdtree), and a side window from [Tagbar](https://github.com/preservim/tagbar) to browse tags and view the structure of the file you are working on:
 
 ![IDE Usage](https://user-images.githubusercontent.com/19287477/123474313-594c2680-d62c-11eb-9b6f-65eca8b3bf04.png)
 
