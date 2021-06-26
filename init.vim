@@ -50,33 +50,14 @@ Plug 'metakirby5/codi.vim'
 Plug 'dkarter/bullets.vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'wellle/context.vim'
 
 " Entertainment
 Plug 'dansomething/vim-hackernews'
 
 call plug#end()
 
-""" Coloring
-syntax on
-color dracula
-highlight Pmenu guibg=#363948
-highlight PmenuSbar guibg=#363948
-"highlight Comment gui=bold " Uncomment if you want comments to be in bold
-
-" Enable True Color Support (ensure you're using a 256-color enabled $TERM, e.g. xterm-256color)
-set termguicolors
-
-" Transparent Background
-function! TransparentBackground()
-    " Uncomment if you are using a translucent terminal and you want nvim to use that.
-    " Note: only uncomment the 4 lines below, and not the entire function, as it is being used throughout this config
-    "highlight Normal guibg=NONE ctermbg=NONE
-    "highlight LineNr guibg=NONE ctermbg=NONE
-    "set fillchars+=vert:\│
-    "highlight VertSplit gui=NONE guibg=NONE guifg=#444444 cterm=NONE ctermbg=NONE ctermfg=gray
-endfunction
-
-""" Other Configurations
+""" Main Configurations
 filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
@@ -90,7 +71,34 @@ set textwidth=0
 set hidden
 set number
 set title
-call TransparentBackground()
+
+""" Coloring
+
+" Functions and autocmds to run whenever changing colorschemes
+function! TransparentBackground()
+    highlight Normal guibg=NONE ctermbg=NONE
+    highlight LineNr guibg=NONE ctermbg=NONE
+    set fillchars+=vert:\│
+    highlight VertSplit gui=NONE guibg=NONE guifg=#444444 cterm=NONE ctermbg=NONE ctermfg=gray
+endfunction
+
+function! DraculaPMenu()
+    highlight Pmenu guibg=#363948
+    highlight PmenuSbar guibg=#363948
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme dracula call DraculaPMenu()
+    "autocmd ColorScheme * call TransparentBackground() " uncomment if you are using a translucent terminal and you want nvim to use that
+augroup END
+
+" Main Coloring Configurations
+syntax on
+color dracula
+
+" Enable True Color Support (ensure you're using a 256-color enabled $TERM, e.g. xterm-256color)
+set termguicolors
 
 """ Plugin Configurations
 
@@ -268,6 +276,9 @@ hi DiffDelete guifg=red guibg=none
 " FixCursorHold for better performance
 let g:cursorhold_updatetime = 100
 
+" context.vim
+let g:context_nvim_no_redraw =1
+
 """ Filetype-Specific Configurations
 
 " HTML, XML, Jinja
@@ -296,16 +307,12 @@ endfunction
 function! ColorDracula()
     let g:airline_theme='dracula'
     color dracula
-    highlight Pmenu guibg=#363948
-    highlight PmenuSbar guibg=#363948
-    call TransparentBackground()
 endfunction
 
 " Seoul256 Mode (Dark & Light)
 function! ColorSeoul256()
     let g:airline_theme='silver'
     color seoul256
-    call TransparentBackground()
 endfunction
 
 " Forgotten Mode (Light)
@@ -314,14 +321,12 @@ function! ColorForgotten()
     let g:airline_theme='tomorrow'
     " Other light colors: forgotten-light, nemo-light
     color forgotten-light
-    call TransparentBackground()
 endfunction
 
 " Zazen Mode (Black & White)
 function! ColorZazen()
     let g:airline_theme='minimalist'
     color zazen
-    call TransparentBackground()
 endfunction
 
 """ Custom Mappings
