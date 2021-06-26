@@ -23,6 +23,16 @@ sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep # https:/
 echo '[*] Downloading vim-plug, the best minimalistic vim plugin manager ...'
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Create a backup of your current coc-settings.json if you have one
+if [ -f ~/.config/nvim/coc-settings.json ]; then
+    echo '[*] Backing up existing coc-settings.json'
+    cp ~/.config/nvim/coc-settings.json ~/.config/nvim/coc-settings.json.backup
+fi
+
+# Copy coc-settings.json in current working directory to nvim's config location. This is for custom diagnostic signs
+echo '[*] Copying coc-settings.json -> ~/.config/nvim/coc-settings.json'
+cp coc-settings.json ~/.config/nvim/
+
 # Create a backup of your current init.vim if you have one
 if [ -f ~/.config/nvim/init.vim ]; then
     echo '[*] Backing up existing init.vim'
@@ -35,7 +45,7 @@ sed '/call plug#end/q' init.vim > ~/.config/nvim/init.vim
 nvim -c 'PlugInstall' -c 'qa'
 rm ~/.config/nvim/init.vim
 
-# Copy init.vim in current working directory to nvim's config location ...
+# Copy init.vim in current working directory to nvim's config location
 echo '[*] Copying init.vim -> ~/.config/nvim/init.vim'
 cp init.vim ~/.config/nvim/
 
