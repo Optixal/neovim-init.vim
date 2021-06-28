@@ -2,7 +2,7 @@
 
 Use it as a regular text editor, with [Dracula](https://github.com/dracula/vim) as the main colorscheme, key information from [vim-airline](https://github.com/vim-airline/vim-airline), and subtle git diff information with [vim-signify](https://github.com/mhinz/vim-signify):
 
-![Regular Text Editor Usage](https://user-images.githubusercontent.com/19287477/123475234-af6d9980-d62d-11eb-8698-4b19c73409cf.png)
+![Regular Text Editor Usage](https://user-images.githubusercontent.com/19287477/123687712-d7563a80-d883-11eb-8b95-a623b5636c26.png)
 
 Or use it as a full-fledged IDE, with autocompletion from [CoC](https://github.com/neoclide/coc.nvim), a filesystem explorer from [NERDTree](https://github.com/preservim/nerdtree), and a side window from [Tagbar](https://github.com/preservim/tagbar) to browse tags and view the structure of the file you are working on:
 
@@ -10,7 +10,7 @@ Or use it as a full-fledged IDE, with autocompletion from [CoC](https://github.c
 
 Quickly find files or strings by fuzzy searching with [fzf.vim](https://github.com/junegunn/fzf.vim) in a beautiful pop-up window:
 
-![FZF Usage](https://user-images.githubusercontent.com/19287477/123475668-4c303700-d62e-11eb-92cc-9e8dfbeffdfb.png)
+![FZF Usage](https://user-images.githubusercontent.com/19287477/123687752-dfae7580-d883-11eb-8a46-aaf458a67ca2.png)
 
 Or perhaps.. ~~procrastinate~~ multitask with [vim-hackernews](https://github.com/dansomething/vim-hackernews) at the side while coding:
 

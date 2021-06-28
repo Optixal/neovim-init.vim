@@ -271,7 +271,7 @@ augroup end
 let g:signify_sign_add = '│'
 let g:signify_sign_delete = '│'
 let g:signify_sign_change = '│'
-hi DiffDelete guifg=red guibg=none
+hi DiffDelete guifg=#ff5555 guibg=none
 
 " FixCursorHold for better performance
 let g:cursorhold_updatetime = 100
