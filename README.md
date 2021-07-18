@@ -16,7 +16,7 @@ Or perhaps.. ~~procrastinate~~ multitask with [vim-hackernews](https://github.co
 
 ![Hacker News Usage](https://user-images.githubusercontent.com/19287477/123479447-88b26180-d633-11eb-988a-bd4cf772dccc.png)
 
-Transparent/translucent terminal background support (uncomment lines in TransparentBackground function), example from WSL2 running Ubuntu on Windows:
+Transparent/translucent terminal background support (uncomment `autocmd ColorScheme * call TransparentBackground()`), example from WSL2 running Ubuntu on Windows:
 
 ![Transparent Usage](https://user-images.githubusercontent.com/19287477/123476545-6f0f1b00-d62f-11eb-8a3b-51589ac78cd7.png)
 
