@@ -95,7 +95,7 @@ Run these to install new plugins, update or delete existing plugins, or upgrade 
 Most custom commands expand off my map leader, keeping nvim as vanilla as possible.
 
 * `,` - Map leader, nearly all my custom mappings starts with pressing the comma key
-* `,q` or `\` - Toggle sidebar filetree viewer (NERDTree)
+* `,q` or `\\` - Toggle sidebar filetree viewer (NERDTree)
 * `,w` or `|` - Toggle sidebar classes, functions, variables list (TagBar)
 * `,ee` - Change colorscheme (with fzf fuzzy finder)
 * `,ea` - Change Airline theme
