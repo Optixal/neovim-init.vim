@@ -11,6 +11,14 @@ echo '[*] App installing Neovim and its dependencies (Python 3 and git), and dep
 sudo apt update
 sudo apt install neovim python3 python3-pip python3-venv git curl exuberant-ctags -y
 
+# Install virtualenv to containerize dependencies for vim-pydocstring (doq) and pep8-style formatting feature (yapf)
+echo '[*] Installing Python dependencies in a virtual environment ...'
+python3 -m venv ~/.config/nvim/env
+source ~/.config/nvim/env/bin/activate
+pip install wheel
+pip install yapf doq
+deactivate
+
 # Install Node.js v16.x (for Ubuntu) for coc.vim
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install -y nodejs
@@ -49,4 +57,4 @@ rm ~/.config/nvim/init.vim
 echo '[*] Copying init.vim -> ~/.config/nvim/init.vim'
 cp init.vim ~/.config/nvim/
 
-echo -e "[+] Done, welcome to your new \033[1m\033[92mNeovim\033[0m experience! Try it by running: nvim/vim. Want to customize it? Modify ~/.config/nvim/init.vim! Remember to change your terminal font to Iosevka Term Regular, or any other preferred nerd font :)"
+echo -e "[+] Done, welcome to your new \033[1m\033[92mNeovim\033[0m experience! Try it by running: nvim. Want to customize it? Modify ~/.config/nvim/init.vim! Remember to change your terminal font to Iosevka Term Nerd Font, or any other preferred nerd font :)"
