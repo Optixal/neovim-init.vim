@@ -124,3 +124,5 @@ Most custom commands expand off my map leader, keeping nvim as vanilla as possib
 * `<Alt-r/c>` - Toggle RGB color picker (vCoolor) (uses GTK+, requires yad or zenity)
 * `<Tab>` - Next buffer
 * `<Shift-Tab>` - Previous buffer
+* `<Shift-Up>` - move sellected or currunt line on above
+* `<Shift-Down>` - move sellected or currunt line on below
