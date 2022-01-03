@@ -38,6 +38,7 @@ echo '[*] App installing Neovim and its dependencies (Python 3 and git), and dep
 if [[ "$OSTYPE" = "darwin"* ]]; then
    brew install neovim python3 pipenv git curl ctags-exuberant
 else
+   sudo add-apt-repository ppa:neovim-ppa/stable
    sudo apt update
    sudo apt install neovim python3 python3-pip python3-venv git curl exuberant-ctags -y
 fi
