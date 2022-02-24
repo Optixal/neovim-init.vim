@@ -9,7 +9,7 @@ wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Re
 echo "[+] Downloaded. Select Iosevka Term Regular as your terminal's custom font."
 # gnome-terminal fix
 echo "[!] There is a bug in gnome-terminal (still present in Ubuntu 20.04 ) that will not make the font being used by it or displayed in the selection list."
-echo "To fix this: apt-get install gnome-gnome-tweaks"
+echo "To fix this: apt-get install gnome-tweaks"
 echo "Select this font, set the size."
 echo "In gnome-terminal under your profile: UNselect custom-font (or the font will be massivly overspaced between chars)"
 echo "Alternatively : What also works (sometimes):"
