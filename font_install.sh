@@ -5,7 +5,7 @@ FONT_DIR=~/.local/share/fonts
 echo "[*] Downloading patch font into ~/.local/share/fonts ..."
 mkdir -p ${FONT_DIR}
 cd ${FONT_DIR}
-wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete.ttf -o  'Iosevka Term Nerd Font Complete.ttf'
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete.ttf
 echo "[+] Downloaded. Select Iosevka Term Regular as your terminal's custom font."
 # gnome-terminal fix
 echo "[!] There is a bug in gnome-terminal (still present in Ubuntu 20.04 ) that will not make the font being used by it or displayed in the selection list."
