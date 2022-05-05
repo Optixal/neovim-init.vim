@@ -22,7 +22,21 @@ Automatically installs my configuration along with dependencies into your system
 
 ### Manual Installation
 
-TODO
+The following are high-level steps to install my neovim config:
+1. Download this repo
+2. Install dependencies: wget, curl, git, gcc, ripgrep and python3 (along with pip and venv)
+3. Install [neovim 0.7.0+](https://github.com/neovim/neovim)
+4. Add neovim to your PATH
+5. Install node (with nvm or n) (along with npm)
+6. Install [language servers](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages) with npm
+7. Set up a virtual environment for Python dependencies with venv, and install Python dependencies while in it with pip
+8. Install [vim-plug](https://github.com/junegunn/vim-plug)
+9. Make a copy of this repo's `init.vim` and place it in `~/.config/nvim/`. Delete everything after `call plug#end()`
+10. Install plugins by entering neovim and running the command `:PlugInstall`
+11. Copy this repo's full version of `init.vim` and the directory `lua/` to `~/.config/nvim/`
+12. Done!
+
+For exact commands to run, refer to `convenience/install.sh`.
 
 ### Post Installation
 
