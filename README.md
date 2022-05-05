@@ -1,6 +1,6 @@
 # Optixal's Neovim init.vim
 
-Just like how a 🔪 is undoubtedly the most important tool of a sushi chef, a text editor is undoubtedly the most important tool of a developer. It has to be robust, versatile, extensible, performant and powerful. It requires sharpening every now and then in order to produce quality work that you are proud of. Lastly, it has to look and feel good in hand so that every use will feel enjoyable.
+Just like how a 🔪 is undoubtedly the most important tool of a sushi chef, a text editor is undoubtedly the most important tool of a developer. It has to be robust, versatile, extensible, performant and powerful. Occasionally, it requires sharpening in order to produce quality work one is proud of. Also, it has to look and feel good in hand so that one will enjoy using it on every use.
 
 ![Neovim-New](https://user-images.githubusercontent.com/19287477/166893010-43bbbf6e-f59b-44a3-b841-359f21d464d6.gif)
 
@@ -11,7 +11,8 @@ TODO: Plugins, wallpaper, font, etc.
 ### Automated Installation
 
 ```sh
-cd convenience
+git clone https://github.com/Optixal/neovim-init.vim.git
+cd neovim-init.vim/convenience
 ./install.sh
 ```
 
@@ -28,15 +29,29 @@ TODO
 nvim-cmp, telescope, lualine and nvim-tree require a patched font to display icons properly. [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) are recommended. Run `./font_install.sh` to download and install Iosevka Term Nerd Font into your `~/.fonts` directory, or run the command manually:
 
 ```sh
-curl -fLo ~/.fonts/Iosevka\ Term\ Nerd\ Font\ Complete.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete.ttf
+curl -fLo ~/.fonts/Iosevka\ Term\ Nerd\ Font\ Complete.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete%20Mono.ttf
 fc-cache -rv
 ```
 
-Once downloaded, open your terminal's preferences and change the font to "Iosevka Term Regular". If the font is not there, your OS' font directory may not be `~/.fonts`. Find out which directory your fonts are stored in, and place the downloaded font file in that directory instead.
+Once downloaded, open your terminal's preferences and change the font to "Iosevka Term Regular".
+
+If the font is not there, try restarting your terminal. If it's still not appearing, your OS' font directory may not be `~/.fonts`. Find out which directory your fonts are stored in, and place the downloaded font file in that directory instead. Or, install them normally using your OS' GUI.
 
 If you are using a GPU-accelerated terminal like kitty, it is better to [avoid using a Nerd Font and use the original font instead](https://sw.kovidgoyal.net/kitty/faq/?highlight=nerd#kitty-is-not-able-to-use-my-favorite-font). Only download and install `NerdFontsSymbolsOnly.zip` from [Nerd Font's releases page](https://github.com/ryanoasis/nerd-fonts/releases) and the terminal should pick up the symbols automatically as the fallback font. Note, if the symbols' sizes are off, you can avoid `NerdFontsSymbolsOnly.zip` and just use the Nerd Font (e.g. the one downloaded in the `curl` example above) as the fallback font, while still benefiting from the cached original fonts.
 
-#### Install language servers
+#### Install grammars and language servers
+
+##### Grammar (for nvim-treesitter highlighting)
+
+As I focus on Python development, I ensured installation of python grammar within `treesitter-config.lua` to get proper highlighting when editing Python files. To install additional grammars (e.g. TypeScript), run the following in nvim:
+
+```
+:TSInstall typescript
+```
+
+For other languages, refer to [this list](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages).
+
+##### Language server (for nvim-lspconfig and nvim-cmp completion)
 
 As I focus on Python development, the installation script installs Python language server (pyright) by default. To install additional language servers (e.g. TypeScript):
 
@@ -44,7 +59,7 @@ As I focus on Python development, the installation script installs Python langua
 npm install -g typescript-language-server
 ```
 
-Then add it to list of servers in the lua section of init.vim:
+Then append it to the array of servers in the lua section of `init.vim`:
 
 ```lua
 local servers = {
