@@ -59,8 +59,8 @@ fi
 echo "[*] Installing neovim $NEOVIM_VERSION ..."
 wget "https://github.com/neovim/neovim/releases/download/v$NEOVIM_VERSION/nvim-linux64.tar.gz" -P /tmp
 mkdir -p ~/.local/bin
-tar xvf /tmp/nvim-linux64.tar.gz -C ~/.local
-ln -s $(readlink -f ~/.local/nvim-linux64/bin/nvim) ~/.local/bin/nvim
+tar xf /tmp/nvim-linux64.tar.gz -C ~/.local
+ln -sf $(readlink -f ~/.local/nvim-linux64/bin/nvim) ~/.local/bin/nvim
 
 # Add ~/.local/bin to PATH if it's not already in it
 if ! [[ ":$PATH:" == *":$HOME/.local/bin:"* ]]; then
@@ -79,6 +79,8 @@ fi
 # Install nvm, node, npm, language servers
 echo "[*] Installing nvm $NVM_VERSION ..."
 curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh" | bash # installs Node Version Manager to ~/.nvm, it also detects bash or zsh and appends source lines to ~/.bashrc or ~/.zshrc accordingly
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # to get the nvm command working without sourcing bash configs
 echo "[*] Installing node $NODE_VERSION ..."
 nvm install $NODE_VERSION # installs specific version of Node
 echo "[*] Installing language servers ..."
@@ -106,4 +108,4 @@ nvim -c 'PlugInstall' -c 'qa'
 echo '[*] Copying init.vim & lua/ -> ~/.config/nvim/'
 cp -r ../init.vim ../lua/ ~/.config/nvim/
 
-echo -e "[+] Done, welcome to your new \033[1m\033[92mneovim\033[0m experience! Try it by running: nvim. (Remember to: source $SHELL_CONFIG_FILE) Want to customize it? Modify ~/.config/nvim/init.vim! Remember to change your terminal font to a nerd font :)"
+echo -e "[+] Done, welcome to your new \033[1m\033[92mneovim\033[0m experience! Try it by running: nvim. (NOTE, remember to: source $SHELL_CONFIG_FILE) Want to customize it? Modify ~/.config/nvim/init.vim! Remember to change your terminal font to a nerd font :)"
