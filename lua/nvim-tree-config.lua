@@ -1,0 +1,2 @@
+require'nvim-tree'.setup {
+}
