@@ -83,6 +83,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # to get the nvm command working without sourcing bash configs
 echo "[*] Installing node $NODE_VERSION ..."
 nvm install $NODE_VERSION # installs specific version of Node
+echo "[*] Setting npm config to use ~/.local as prefix ..."
+npm config set prefix '~/.local/' # npm install -g will now install to ~/.local/bin
 echo "[*] Installing language servers ..."
 npm i -g pyright # python language server
 #npm i -g typescript typescript-language-server # uncomment to install typescript language server. remember to add "tsserver" to the "servers" list in init.vim within the lua section. See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for other language servers.
