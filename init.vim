@@ -40,6 +40,7 @@ Plug 'wellle/context.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Functionalities - Python
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'heavenshell/vim-pydocstring'
 
 " Aesthetics - Colorschemes
@@ -154,7 +155,8 @@ tmap <C-w> <Esc><C-w>
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
-" Pydocstring
+" Python
+let g:python3_host_prog = '~/.config/nvim/env/bin/python3'
 let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
 
 """ Core plugin configuration (lua)
@@ -205,7 +207,7 @@ nmap <leader>$v <C-w>v<C-w>l:terminal<CR>:set nonumber<CR><S-a>
 
 " Python
 autocmd Filetype python nmap <leader>d <Plug>(pydocstring)
-autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yapf<CR>
+autocmd FileType python nmap <leader>p :Black<CR>
 
 " Telescope mappings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>

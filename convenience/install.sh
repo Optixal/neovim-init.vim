@@ -32,7 +32,7 @@ echo '[*] Installing dependencies ...'
 #  * git (for vim-plug itself)
 #  * build-essential (or gcc for mac) (for nvim-treesitter's TSInstall and telescope-fzf-native's initial make)
 #  * ripgrep (for telescope)
-#  * python3 (and python3-pip and python3-venv for linux) (for Python 3 capabilities, e.g. doq python docstrings and yapf formatting)
+#  * python3 (and python3-pip and python3-venv for linux) (for Python 3 capabilities, e.g. pynvim and doq python docstrings)
 if [[ "$OSTYPE" = "darwin"* ]]; then
     brew install \
         wget \
@@ -89,12 +89,12 @@ echo "[*] Installing language servers ..."
 npm i -g pyright # python language server
 #npm i -g typescript typescript-language-server # uncomment to install typescript language server. remember to add "tsserver" to the "servers" list in init.vim within the lua section. See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for other language servers.
 
-# Install virtualenv to containerize dependencies for vim-pydocstring (doq) and pep8-style formatting feature (yapf)
+# Install virtualenv to containerize dependencies for vim-pydocstring (doq) and formatting feature (pynvim for black plugin)
 echo '[*] Installing Python dependencies in a virtual environment ...'
 python3 -m venv ~/.config/nvim/env
 source ~/.config/nvim/env/bin/activate
 pip install wheel
-pip install doq yapf
+pip install pynvim doq
 deactivate
 
 # Install vim-plug plugin manager
