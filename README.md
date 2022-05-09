@@ -45,15 +45,24 @@ For exact commands to run, refer to `convenience/install.sh`.
 nvim-cmp, telescope, lualine and nvim-tree require a patched font to display icons properly. [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) are recommended. Run `./font_install.sh` to download and install Iosevka Term Nerd Font into your `~/.fonts` directory, or run the command manually:
 
 ```sh
-curl -fLo ~/.fonts/Iosevka\ Term\ Nerd\ Font\ Complete.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete%20Mono.ttf
+curl -fLo ~/.fonts/Iosevka\ Term\ Nerd\ Font\ Complete\ Mono.ttf --create-dirs https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete%20Mono.ttf
 fc-cache -rv
 ```
 
-Once downloaded, open your terminal's preferences and change the font to "Iosevka Term Regular".
+Once downloaded, open your terminal's preferences and change the font to "Iosevka Term Mono". If your terminal allows to differentiate the regular, bold, italics and bold-italics, make sure to download the other variations as well.
 
-If the font is not there, try restarting your terminal. If it's still not appearing, your OS' font directory may not be `~/.fonts`. Find out which directory your fonts are stored in, and place the downloaded font file in that directory instead. Or, install them normally using your OS' GUI.
+If the font does not appear in your terminal settings, try restarting your terminal. If it's still not appearing, your OS' font directory may not be `~/.fonts`. Find out which directory your fonts are stored in, and place the downloaded font file in that directory instead. Or, install the font normally using your OS' GUI.
 
-If you are using a GPU-accelerated terminal like kitty, it is better to [avoid using a Nerd Font and use the original font instead](https://sw.kovidgoyal.net/kitty/faq/?highlight=nerd#kitty-is-not-able-to-use-my-favorite-font). Only download and install `NerdFontsSymbolsOnly.zip` from [Nerd Font's releases page](https://github.com/ryanoasis/nerd-fonts/releases) and the terminal should pick up the symbols automatically as the fallback font. Note, if the symbols' sizes are off, you can avoid `NerdFontsSymbolsOnly.zip` and just use the Nerd Font (e.g. the one downloaded in the `curl` example above) as the fallback font, while still benefiting from the cached original fonts.
+If you are using a GPU-accelerated terminal like kitty, or if the font starts to look weird in your terminal, it could be better to [avoid using a Nerd Font and use the original font instead](https://sw.kovidgoyal.net/kitty/faq/?highlight=nerd#kitty-is-not-able-to-use-my-favorite-font), while still using a single Nerd Font as the fallback for the symbols.
+
+So, instead of installing:
+* Iosevka Term Nerd Font Mono (Regular, Bold, Italics, Bold-Italics) (Characters & symbols will be used)
+
+Install this:
+* Iosevka (Regular, Bold, Italics, Bold-Italics) (Characters will be used)
+* Iosevka Term Nerd Font Mono (Regular) (Symbols will be used)
+
+Your terminal should pick up the symbols automatically from the single nerd font as the fallback font.
 
 #### Install grammars and language servers
 
