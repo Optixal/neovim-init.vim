@@ -1,12 +1,12 @@
 # Optixal's Neovim init.vim
 
-Just like how a 🔪 is undoubtedly the most important tool of a sushi chef, a text editor (and perhaps a good mechanical keyboard) is undoubtedly the most important tool of a developer. It has to be robust, versatile, extensible, performant and powerful. Occasionally, it requires sharpening in order to produce quality work one is proud of. Also, it has to look and feel good in hand so that one will enjoy using it on every use.
+![image](https://user-images.githubusercontent.com/19287477/167697617-3b26ac45-2a86-436d-af7a-93968467e82c.png)
+_Windows 10, Ubuntu WSL - Windows Terminal_
 
 ![Neovim-New](https://user-images.githubusercontent.com/19287477/166893010-43bbbf6e-f59b-44a3-b841-359f21d464d6.gif)
 _Ubuntu 22.04 - Kitty Terminal_
 
-![image](https://user-images.githubusercontent.com/19287477/167697617-3b26ac45-2a86-436d-af7a-93968467e82c.png)
-_Windows 10, Ubuntu WSL - Windows Terminal_
+Just like how a 🔪 is undoubtedly the most important tool of a sushi chef, a text editor (and perhaps a good mechanical keyboard) is undoubtedly the most important tool of a developer. It has to be robust, versatile, extensible, performant and powerful. Occasionally, it requires sharpening in order to produce quality work one is proud of. Also, it has to look and feel good in hand so that one will enjoy using it on every use.
 
 My neovim config has been updated for neovim 0.7.0. It is now a hybrid init.vim with lua support. It features core plugins including [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), [telescope](https://github.com/nvim-telescope/telescope.nvim), [lualine](https://github.com/nvim-lualine/lualine.nvim) and [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua).
 
