@@ -4,7 +4,9 @@ Just like how a 🔪 is undoubtedly the most important tool of a sushi chef, a t
 
 ![Neovim-New](https://user-images.githubusercontent.com/19287477/166893010-43bbbf6e-f59b-44a3-b841-359f21d464d6.gif)
 
-My neovim config has been updated for neovim 0.7.0. It now features core plugins including [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), [telescope](https://github.com/nvim-telescope/telescope.nvim), [lualine](https://github.com/nvim-lualine/lualine.nvim) and [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua).
+![image](https://user-images.githubusercontent.com/19287477/167697617-3b26ac45-2a86-436d-af7a-93968467e82c.png)
+
+My neovim config has been updated for neovim 0.7.0. It is now a hybrid init.vim with lua support. It features core plugins including [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), [telescope](https://github.com/nvim-telescope/telescope.nvim), [lualine](https://github.com/nvim-lualine/lualine.nvim) and [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua).
 
 The colorsheme used is my favorite, [Dracula](https://github.com/dracula/vim), and the font used is my favorite too, [Iosevka](https://github.com/be5invis/Iosevka).
 
