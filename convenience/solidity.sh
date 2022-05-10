@@ -10,9 +10,33 @@ sudo apt-get install solc
 
 # Grammar: Run ':TSInstall solidity' in nvim
 
-# Formatter: In your package, run the following
-# npm install --save-dev prettier prettier-plugin-solidity
-
 # Mapping for Formatter: Add this to init.vim
 # autocmd Filetype solidity nmap <leader>p :0,$!npx prettier %<CR>
 
+
+# In your project:
+
+# Formatter: Prettier. In your package, run the following:
+npm install --save-dev prettier prettier-plugin-solidity
+# .prettierrc.json:
+# {
+#   "printWidth": 120
+# }
+# .prettierignore can follow .gitignore
+
+# Linter: Solhint. In your package, run the following:
+npm install --save-dev solhint solhint-plugin-prettier
+npx solhint --init
+# .solhint.json:
+# {
+#   "extends": "solhint:recommended",
+#   "plugins": [],
+#   "rules": {
+#     "avoid-throw": "warn",
+#     "avoid-suicide": "error",
+#     "avoid-sha3": "warn"
+#     "compiler-version": ["error", "^0.8.0"]
+#   },
+#   "plugins": ["prettier"]
+# }
+# .solhintignore can follow .gitignore
