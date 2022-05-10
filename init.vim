@@ -209,6 +209,9 @@ nmap <leader>$v <C-w>v<C-w>l:terminal<CR>:set nonumber<CR><S-a>
 autocmd Filetype python nmap <leader>d <Plug>(pydocstring)
 autocmd FileType python nmap <leader>p :Black<CR>
 
+" Solidity (requires: npm install --save-dev prettier prettier-plugin-solidity)
+autocmd Filetype solidity nmap <leader>p :0,$!npx prettier %<CR>
+
 " Telescope mappings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
