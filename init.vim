@@ -161,14 +161,13 @@ let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
 
 """ Core plugin configuration (lua)
 lua << EOF
-local servers = {
+servers = {
     'pyright',
     --'tsserver', -- uncomment for typescript. See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for other language servers
 }
 require('treesitter-config')
 require('nvim-cmp-config')
 require('lspconfig-config')
-add_capabilities(servers)
 require('telescope-config')
 require('lualine-config')
 require('nvim-tree-config')
