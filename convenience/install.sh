@@ -8,6 +8,7 @@
 NEOVIM_VERSION=0.7.0
 NVM_VERSION=0.39.1
 NODE_VERSION=18.0.0
+export NVIM_OS
 
 # Check if this script is being run in the "convenience" directory
 if ! [[ "$PWD" = */convenience ]]; then
@@ -35,39 +36,41 @@ echo '[*] Installing dependencies ...'
 #  * python3 (and python3-pip and python3-venv for linux) (for Python 3 capabilities, e.g. pynvim and doq python docstrings)
 if [[ "$OSTYPE" = "darwin"* ]]; then
     brew install \
-        wget \
-        curl \
-        git \
-        gcc \
-        ripgrep \
-        python3
+    wget \
+    curl \
+    git \
+    gcc \
+    ripgrep \
+    python3
+    NVIM_OS=macos
 else
     sudo apt update
     sudo apt install \
-        wget \
-        curl \
-        git \
-        build-essential \
-        ripgrep \
-        python3 \
-        python3-pip \
-        python3-venv \
-        -y
+    wget \
+    curl \
+    git \
+    build-essential \
+    ripgrep \
+    python3 \
+    python3-pip \
+    python3-venv \
+    -y
+    NVIM_OS=linux64
 fi
 
 # Install neovim
 echo "[*] Installing neovim $NEOVIM_VERSION ..."
-wget "https://github.com/neovim/neovim/releases/download/v$NEOVIM_VERSION/nvim-linux64.tar.gz" -O /tmp/nvim-linux64.tar.gz
+wget "https://github.com/neovim/neovim/releases/download/v$NEOVIM_VERSION/nvim-${NVIM_OS}.tar.gz" -O /tmp/nvim-${NVIM_OS}.tar.gz
 mkdir -p ~/.local/bin
-tar xf /tmp/nvim-linux64.tar.gz -C ~/.local
-ln -sf $(readlink -f ~/.local/nvim-linux64/bin/nvim) ~/.local/bin/nvim
+tar xf /tmp/nvim-${NVIM_OS}.tar.gz -C ~/.local
+ln -sf $(readlink -f ~/.local/nvim-${NVIM_OS}/bin/nvim) ~/.local/bin/nvim
 
 # Add ~/.local/bin to PATH if it's not already in it
 if ! [[ ":$PATH:" == *":$HOME/.local/bin:"* ]]; then
     echo "[*] Adding ~/.local/bin to PATH"
     if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
         SHELL_CONFIG_FILE=~/.zshrc
-    elif [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
+        elif [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
         SHELL_CONFIG_FILE=~/.profile
     else
         echo "[-] Could not detect what shell you are using. Ensure to manually add ~/.local/bin to your PATH"
