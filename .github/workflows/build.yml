@@ -24,13 +24,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      
+      - name: ShellCheck for `.sh`
+        # You may pin to the exact commit or the version.
+        # uses: ludeeus/action-shellcheck@94e0aab03ca135d11a35e5bfc14e6746dc56e7e9
+        uses: ludeeus/action-shellcheck@1.1.0
+        with:
+          scandir: ./convenience
+          
+      - name: run `./install.sh`
         run: cd convenience && ./install.sh
 
 
