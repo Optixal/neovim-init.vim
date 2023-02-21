@@ -29,7 +29,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Update nvim-cmp capabilities and add them to each language server
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 function add_capabilities()
     for _, lsp in ipairs(servers) do
